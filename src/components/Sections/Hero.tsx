@@ -2,8 +2,7 @@ import {ChevronDownIcon} from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import {FC, memo, useEffect, useState} from 'react';
 
-import {aboutData} from '../../data/data';
-import {heroData, SectionId} from '../../data/data';
+import {aboutData, heroData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
 
 const Hero: FC = memo(() => {

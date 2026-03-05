@@ -1,7 +1,7 @@
 import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, useEffect, useMemo, useRef, useState} from 'react';
+import {FC, memo, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 import {isMobile} from '../../config';
 import {portfolioItems, SectionId} from '../../data/data';
@@ -24,6 +24,7 @@ const buildAutoplayEmbedSrc = (src: string) => {
 
 const Portfolio: FC = memo(() => {
   const [expandedItem, setExpandedItem] = useState<PortfolioItem | null>(null);
+  const handleCloseExpandedItem = useCallback(() => setExpandedItem(null), []);
 
   const groups = [
     'Web Development',
@@ -64,7 +65,7 @@ const Portfolio: FC = memo(() => {
           );
         })}
       </div>
-      {expandedItem && <ExpandedVideoModal item={expandedItem} onClose={() => setExpandedItem(null)} />}
+      {expandedItem && <ExpandedVideoModal item={expandedItem} onClose={handleCloseExpandedItem} />}
     </Section>
   );
 });
@@ -220,7 +221,6 @@ const CardMedia: FC<{item: PortfolioItem}> = memo(({item}) => {
             alt={title}
             className={classNames('h-full w-full transition-all duration-500', mediaFitClass)}
             src={showcaseImage}
-            style={{height: '100%', width: '100%'}}
           />
         )
       ) : null}

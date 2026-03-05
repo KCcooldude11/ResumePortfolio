@@ -137,15 +137,17 @@ const NavItem: FC<{
   onActivate?: (section: SectionId) => void;
   onClick?: () => void;
 }> = memo(({section, current, inactiveClass, activeClass, onActivate, onClick}) => {
+  const handleClick = useCallback(() => {
+    onActivate?.(section as SectionId);
+    onClick?.();
+  }, [onActivate, onClick, section]);
+
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
       href={`/#${section}`}
       key={section}
-      onClick={() => {
-        onActivate?.(section as SectionId);
-        onClick?.();
-      }}>
+      onClick={handleClick}>
       {section}
     </Link>
   );
