@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Global styles */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  height: 100vh;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  color: #444444;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+}
+
+td,
+th {
+  padding: 4px 8px 4px 4px;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+.home-apple-loop {
+  animation: homeAppleFloat 2400ms linear infinite;
+}
+
+.home-medallion-loop {
+  animation: homeMedallionBob 3000ms ease-in-out infinite;
+}
+
+@keyframes homeAppleFloat {
+  0% {
+    transform: translateY(-34px);
+  }
+
+  55% {
+    transform: translateY(34px);
+  }
+
+  72% {
+    transform: translateY(34px);
+  }
+
+  100% {
+    transform: translateY(-34px);
+  }
+}
+
+@keyframes homeMedallionBob {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
+}
